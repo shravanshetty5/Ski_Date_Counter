@@ -27,6 +27,7 @@
   "dependencies": {
     "eslint": "^4.7.0",
     "react": "^15.3.2",
-    "react-dom": "^15.3.2"
+    "react-dom": "^15.3.2",
+    "react-icons": "^2.2.5"
   }
 }
