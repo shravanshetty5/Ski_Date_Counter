@@ -12,24 +12,13 @@ export class App extends Component {
             allSkiDays: [
                 {
 				resort: "Squaw Valley",
-				date: new Date("1/2/2016"),
+				date: "2016-01-02",
 				powder: true,
 				backcountry: false
-			},
-			{
-				resort: "Kirkwood",
-				date: new Date("3/28/2016"),
-				powder: false,
-				backcountry: false
-			},
-			{
-				resort: "Mt. Tallac",
-				date: new Date("4/2/2016"),
-				powder: false,
-				backcountry: true
 			}
             ]
         };
+        this.addDay = this.addDay.bind(this);
     };
     countDays(filter) {
         const { allSkiDays } = this.state;
@@ -37,12 +26,25 @@ export class App extends Component {
             (day) => (filter) ? day[filter] : day
         ).length;
     };
+    addDay (newDay) {
+        console.log('triggering add date');
+        console.log('resort', newDay.resort);
+        console.log('date', newDay.date);
+        console.log('powder', newDay.powder);
+        console.log('backcountry', newDay.backcountry);
+        this.setState({
+            allSkiDays: [
+                ...this.state.allSkiDays,
+                newDay
+            ]
+        });
+    }
     render () {
         return (
             <div className="app">
                 <Menu />
                 {(this.props.location.pathname === "/add-day") ?
-                <AddDayForm /> : (this.props.location.pathname === "/") ?
+                <AddDayForm addDay={this.addDay}/> : (this.props.location.pathname === "/") ?
                 <SkiDayCount total={this.countDays()}
                             powder={this.countDays("powder")}
                             backcountry={this.countDays("backcountry")}/> :

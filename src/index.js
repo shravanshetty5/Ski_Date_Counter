@@ -3,6 +3,8 @@ import { render } from 'react-dom';
 import { App } from './components/app';
 import { ErrorPage } from './components/errorPage';
 import { Router, Route, hashHistory } from 'react-router';
+import './stylesheets/ui.scss';
+import './stylesheets/index.scss';
 
 window.React = React;
 
